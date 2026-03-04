@@ -6,7 +6,6 @@ import playformCompress from "@playform/compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "shiro-devv.github.io",
   integrations: [
     tailwind(),
     astroIcon({
