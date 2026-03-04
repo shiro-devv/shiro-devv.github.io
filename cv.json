@@ -1,0 +1,237 @@
+{
+  "analyticsCode": "",
+  "pageLayout": "single-column",
+  "basics": {
+    "name": "Shen",
+    "label": "Intermediate Developer",
+    "image": "/avatar.JPG",
+    "email": "shen.does.dev@gmail.com",
+    "url": "",
+    "summary": "Profiient in TypeScript and JavaScript, also has skills in other programming languages.",
+    "qoute": "Proritze yourself before others.",
+    "theme": "cyberpunk",
+    "location": {
+      "address": "Cal-laguip",
+      "city": "Vigan",
+      "countryCode": "PH",
+      "region": "Philippines"
+    },
+    "profiles": [
+      {
+        "network": "Meta",
+        "icon": "ri:facebook-fill",
+        "username": "Stephen Raphael L. Garcia",
+        "url": "https://www.facebook.com/shen.is.sleepy/"
+      },
+      {
+        "network": "Instagram",
+        "icon": "ri:instagram-fill",
+        "username": "Shiro",
+        "url": "https://www.instagram.com/shiro_is.tired/"
+      },
+      {
+        "network": "Spotify",
+        "icon": "ri:spotify-fill",
+        "username": "Shen",
+        "url": "https://open.spotify.com/user/21rdslak3b4bl7vipvyvw77ba"
+      },
+      {
+        "network": "GitHub",
+        "icon": "mdi:github",
+        "username": "shen-desuu-dev",
+        "url": "https://github.com/shen-desuu-dev"
+      }
+    ]
+  },
+  "images": {
+    "intro": "Photography is a way to keep memories and to look back on.",
+    "list": [
+      {
+        "image": "/Halloween.JPG",
+        "alt": "Haloween",
+        "desc": "Shot in the halloween of  vigan 2024.1.11"
+      },
+      {
+        "image": "/Lamp.JPG",
+        "alt": "Street Light",
+        "desc": "A chill night in vigan."
+      },
+      {
+        "image": "/party.jpg",
+        "alt": "Acquaintance Party",
+        "desc": "Acquaintance Party, Boring and Fun at the same time."
+      },
+      {
+        "image": "/Kuro.jpg",
+        "alt": "kuro",
+        "desc": "Kuro Jumpscare!!!"
+      },
+      {
+        "alt": "History",
+        "desc": "Vigan History Picture Taking / Hangout",
+        "image": "/vigan_history.jpg"
+      },
+      {
+        "image": "/the_gang.jpg",
+        "alt": "The gang",
+        "desc": "The gang"
+      },
+      {
+        "alt": "The bois",
+        "desc": "The bois (Original)",
+        "image": "/the_bois.png"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "University of the Northern Philippines",
+      "url": "",
+      "area": "Regular Student (Comp Sci Major)",
+      "studyType": "Full-time student",
+      "startDate": "2024",
+      "endDate": "2028"
+    },
+    {
+      "institution": "St. Paul College of Ilocos Sur",
+      "url": "",
+      "area": "Regular Student",
+      "studyType": "Full-time student",
+      "startDate": "2011",
+      "endDate": "2024"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Code Smarter: A Begginers Guide to Progamming Practices",
+      "date": "2024-27-11",
+      "issuer": "Caren Kate Q. Cubon, MIT",
+      "url": ""
+    },
+    {
+      "name": "Success has lived a day in the world.",
+      "date": "2005-09-12",
+      "url": "",
+      "issuer": "Myself"
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "icon": "simple-icons:html5",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "icon": "ri:css3-fill",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "icon": "simple-icons:javascript",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "icon": "simple-icons:typescript",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "Node",
+      "icon": "ri:nodejs-line",
+      "level": "Expert",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "icon": "simple-icons:mongodb",
+      "level": "Expert",
+      "keywords": [
+        "Databases",
+        "File",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "icon": "mdi:github",
+      "level": "Expert",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code",
+        "Git"
+      ]
+    },
+    {
+      "name": "Go",
+      "icon": "simple-icons:go",
+      "level": "Intermediate",
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Filipino",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "Ilocano",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Intermediate"
+    }
+  ],
+  "work": [
+    {
+      "name": "Robo Rangers",
+      "position": "Leader / Head Developer",
+      "location_type": "Remote",
+      "location": "Vigan",
+      "url": "",
+      "startDate": "2024-3-3",
+      "endDate": "2024",
+      "summary": "Creating a flood warning device.",
+      "highlights": [],
+      "responsibilities": [
+        "Programmed the arduino uno.",
+        "Leading the team."
+      ],
+      "achievements": [
+        "Second place",
+        "Environmental friendly reward"
+      ],
+      "skills": {
+        "Arduino": "simple-icons:arduino"
+      }
+    }
+  ]
+}
