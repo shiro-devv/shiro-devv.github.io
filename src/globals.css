@@ -146,7 +146,7 @@
 
 @layer components {
   .panel {
-    @apply rounded-2xl border border-skin-muted/30 bg-skin-button-muted/95 p-5 shadow-sm backdrop-blur transition duration-200 hover:shadow-md;
+    @apply rounded-2xl border border-skin-muted/30 bg-skin-button-muted/95 p-5 shadow-sm backdrop-blur;
   }
 
   .section-title {
@@ -159,26 +159,5 @@
 
   .icon-button {
     @apply inline-flex size-9 items-center justify-center rounded-lg border border-skin-muted/30 text-skin-base transition-all duration-200 hover:-translate-y-0.5 hover:border-skin-hue/40 hover:bg-skin-hue/10;
-  }
-
-
-  .button-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-skin-hue px-3 py-2 text-sm font-medium text-skin-inverted transition hover:brightness-110;
-  }
-
-  .button-secondary {
-    @apply inline-flex items-center gap-2 rounded-lg border border-skin-muted/40 bg-skin-button-muted px-3 py-2 text-sm font-medium text-skin-base transition hover:border-skin-hue/40 hover:bg-skin-hue/10;
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
