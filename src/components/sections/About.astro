@@ -1,13 +1,9 @@
 ---
 import Section from "../Section.astro";
-
 import CV from "@cv";
 const { summary } = CV.basics;
 ---
 
 <Section title="About">
-  <p class="font-mono opacity-75 print:font-sans">
-    {summary}
-  </p>
+  <p class="text-sm leading-7 text-skin-muted sm:text-base">{summary}</p>
 </Section>
-
