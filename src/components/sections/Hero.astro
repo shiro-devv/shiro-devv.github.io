@@ -17,9 +17,6 @@ const githubProfile = profiles.find((profile) => profile.network.toLowerCase() =
         <h2 class="text-base text-skin-muted sm:text-lg">{label}</h2>
       </div>
 
-    <div class="space-y-3">
-      <h1 class="text-3xl font-bold tracking-tight text-skin-base sm:text-4xl">{name}</h1>
-      <h2 class="text-base text-skin-muted sm:text-lg">{label}</h2>
       <p class="flex items-center gap-2 text-sm text-skin-muted">
         <Icon name="mdi:map-marker-outline" width={18} height={18} />
         {address}, {city}, {region}
@@ -52,20 +49,6 @@ const githubProfile = profiles.find((profile) => profile.network.toLowerCase() =
       <footer class="print text-sm">{email}</footer>
     </div>
 
-      <div class="flex flex-wrap items-center gap-2 print:hidden">
-        {email && (
-          <a href={`mailto:${email}`} title="Send email" target="_blank" rel="noopener noreferrer" class="icon-button">
-            <Icon name="mdi:email-outline" width={18} height={18} />
-          </a>
-        )}
-        {profiles.map(({ network, url, icon }) => (
-          <a href={url} title={`Visit ${network}`} target="_blank" rel="noopener noreferrer" class="icon-button">
-            <Icon name={icon} width={18} height={18} />
-          </a>
-        ))}
-      </div>
-      <footer class="print text-sm">{email}</footer>
-    </div>
     <figure class="relative mx-auto w-fit print:hidden sm:mx-0">
       <Image
         class="aspect-square w-28 rounded-2xl border border-skin-muted/30 object-cover shadow-xl shadow-skin-hue/20"
