@@ -35,7 +35,14 @@ import { Icon } from "astro-icon/components";
     themeSwitchButton.setAttribute("aria-pressed", isDark ? "true" : "false");
   }
 
-  function toggleDark(event: MouseEvent) {
+  function updateButtonState() {
+    const themeSwitchButton = document.getElementById("themeSwitch");
+    if (!themeSwitchButton) return;
+    themeSwitchButton.setAttribute("aria-pressed", isDark ? "true" : "false");
+  }
+
+  // @ts-expect-error Astro inline script cannot type the click event parameter here
+  const toggleDark = (event) => {
     const isAppearanceTransition =
       "startViewTransition" in document &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
