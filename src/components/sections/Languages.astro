@@ -1,0 +1,16 @@
+---
+import Section from "../Section.astro";
+import { languages } from "@cv";
+import { Icon } from "astro-icon/components";
+---
+
+<Section className={Astro.props.className} title="Languages">
+  <ul class="flex flex-wrap gap-2 sm:gap-3">
+    {languages.map(({ fluency, language }) => (
+      <li class="tag" title={language}>
+        <span>{language} - {fluency}</span>
+      </li>
+    ))}
+  </ul>
+</Section>
+

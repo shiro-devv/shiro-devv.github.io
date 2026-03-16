@@ -12,6 +12,9 @@ import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import CV, { basics } from "@cv";
 import Education from "@/components/sections/Education.astro";
 import Images from "@/components/sections/Images.astro";
+import Qoute from "@/components/sections/Qoute.astro";
+import Languages from "@/components/sections/Languages.astro";
+import Contacts from "@/components/sections/Contacts.astro";
 const { name, label } = basics;
 
 enum PageLayout {
@@ -25,12 +28,15 @@ enum PageLayout {
   <main class="mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 sm:px-8 lg:grid-cols-6 lg:gap-8 lg:px-12 lg:py-12">
     <aside class="space-y-6 lg:col-span-2">
       <Hero />
+      <Qoute />
       <About />
-      <Skills className="print:hidden" />
+      <Contacts />
       <ThemeSwitch />
     </aside>
 
     <section class="space-y-6 lg:col-span-4">
+      <Skills className="print:hidden" />
+      <Languages />
       <Experience />
       <Education />
     </section>
@@ -49,14 +55,14 @@ enum PageLayout {
         </div>
       ) : (
         <div class="space-y-6">
-          <Projects className="print:hidden" />
+          <Projects/>
           {CV?.images && <Images className="print:hidden" />}
         </div>
       )}
     </main>
   )}
 
-  <KeyboardManager />
+  <!-- <KeyboardManager /> -->
 </Layout>
 
 <script>

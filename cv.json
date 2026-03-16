@@ -1,14 +1,14 @@
 {
   "analyticsCode": "",
-  "pageLayout": "single-column",
+  "pageLayout": "two-column",
   "basics": {
-    "name": "Shen",
+    "name": "Stephen Raphael L. Garcia",
     "label": "Intermediate Developer",
     "image": "/avatar.JPG",
     "email": "shen.does.dev@gmail.com",
-    "url": "",
-    "summary": "Profiient in TypeScript and JavaScript, also has skills in other programming languages.",
-    "qoute": "Proritze yourself before others.",
+    "url": "https://shiro-devv.github.io",
+    "summary": "I first learned how to program when I was in Grade 9, when I took programming as an elective subject. That was my introduction to coding, and the first languages I learned was Java, JavaScript, and Python. It helped me understand the basics of programming such as logic, problem solving, and how software works. As I continued my studies, I kept my interest in programming and brought it with me into college. I am currently a second-year college student at the University of Northern Philippines, where I continue to develop my programming skills. Over time I started exploring more technologies and expanding beyond the language I first learned. Right now I am learning multiple programming languages, including Go, and I am also re-learning HTML and CSS to strengthen my understanding of web development. Programming has become an important part of my academic life and something I continue to improve as I study and gain more experience.",
+    "qoute": "Start where you are, learn what you can, and keep building—every line of code today shapes the software and the person you’ll become tomorrow.",
     "theme": "cyberpunk",
     "location": {
       "address": "Cal-laguip",
@@ -30,6 +30,12 @@
         "url": "https://www.instagram.com/shiro_is.tired/"
       },
       {
+        "network": "X (formerly known as Twitter)",
+        "icon": "ri:twitter-fill",
+        "username": "SHIROOOOO",
+        "url": "https://x.com/Shiro_is_gone"
+      },
+      {
         "network": "Spotify",
         "icon": "ri:spotify-fill",
         "username": "Shen",
@@ -40,6 +46,12 @@
         "icon": "mdi:github",
         "username": "shen-desuu-dev",
         "url": "https://github.com/shiro-devv"
+      },
+      {
+        "network": "Email",
+        "icon": "mdi:email",
+        "username": "shen.does.dev@gmail.com",
+        "url": "mailto:shen.does.dev@gmail.com"
       }
     ]
   },
@@ -105,109 +117,68 @@
     {
       "name": "Code Smarter: A Begginers Guide to Progamming Practices",
       "date": "2024-27-11",
-      "issuer": "Caren Kate Q. Cubon, MIT",
-      "url": ""
+      "issuer": "Caren Kate Q. Cubon, MIT"
     },
     {
       "name": "Success has lived a day in the world.",
       "date": "2005-09-12",
-      "url": "",
       "issuer": "Myself"
     }
   ],
   "skills": [
     {
-      "name": "HTML",
-      "icon": "simple-icons:html5",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend"
-      ]
-    },
-    {
-      "name": "CSS",
-      "icon": "ri:css3-fill",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
-      ]
-    },
-    {
       "name": "JavaScript",
       "icon": "simple-icons:javascript",
-      "level": "Expert",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Fullstack"
-      ]
+      "level": "Intermediate"
     },
     {
       "name": "TypeScript",
       "icon": "simple-icons:typescript",
-      "level": "Expert",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Superset"
-      ]
+      "level": "Intermediate"
     },
     {
       "name": "Node",
       "icon": "ri:nodejs-line",
-      "level": "Expert",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript"
-      ]
+      "level": "Intermediate"
     },
     {
       "name": "MongoDB",
       "icon": "simple-icons:mongodb",
-      "level": "Expert",
-      "keywords": [
-        "Databases",
-        "File",
-        "Data Storage",
-        "Backend"
-      ]
+      "level": "Intermediate"
     },
     {
       "name": "GitHub",
       "icon": "mdi:github",
-      "level": "Expert",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
+      "level": "Expert"
     },
     {
-      "name": "Go",
-      "icon": "simple-icons:go",
-      "level": "Intermediate",
-      "keywords": [
-        ""
-      ]
+      "name": "Python",
+      "icon": "simple-icons:python",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Java",
+      "icon": "simple-icons:oracle",
+      "level": "Intermediate"
+    },
+    {
+      "name": "PostgreSQL",
+      "icon": "simple-icons:postgresql",
+      "level": "Intermediate"
     }
   ],
   "languages": [
     {
       "language": "Filipino",
-      "fluency": "Native speaker"
+      "fluency": "Native"
     },
     {
       "language": "Ilocano",
-      "fluency": "Native speaker"
+      "fluency": "Native"
     },
     {
       "language": "English",
-      "fluency": "Intermediate"
+      "fluency": "Proficient"
     }
   ],
   "work": [
@@ -217,8 +188,8 @@
       "location_type": "Remote",
       "location": "Vigan",
       "url": "",
-      "startDate": "2024-3-3",
-      "endDate": "2024",
+      "startDate": "2 / 24 / 2024",
+      "endDate": "3 / 3 / 2024",
       "summary": "Creating a flood warning device.",
       "highlights": [],
       "responsibilities": [
@@ -231,6 +202,19 @@
       ],
       "skills": {
         "Arduino": "simple-icons:arduino"
+      }
+    },
+    {
+      "name": "IT Olympics",
+      "position": "Participant",
+      "startDate": "11 / 21 / 2025",
+      "endDate": "11 / 23 / 2025",
+      "summary": "Participating in the Database Programming competition",
+      "location": "Makati",
+      "location_type": "University of Makati",
+      "responsibilities": ["Create a database given by the instructor."],
+      "skills": {
+        "PostgreSQL": "simple-icons:postgresql"
       }
     }
   ]

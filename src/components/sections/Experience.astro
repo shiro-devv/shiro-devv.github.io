@@ -11,8 +11,8 @@ import { Icon } from "astro-icon/components";
         { name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type },
         index,
       ) => {
-        const startYear = new Date(startDate).getFullYear();
-        const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present";
+        const startYear = startDate;
+        const endYear = endDate != null ? endDate : "Present";
         const detailsId = `experience-details-${index}`;
 
         return (
