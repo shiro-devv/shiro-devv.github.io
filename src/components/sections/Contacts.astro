@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "../Section.astro";
+import CV from "@cv";
+const { profiles } = CV.basics;
+---
+
+<Section title="Contacts">
+        <div class="flex items-center gap-2 print:hidden">
+        {profiles.map(({ network, url, icon }) => (
+          <a href={url} title={`Visit ${network}`} target="_blank" rel="noopener noreferrer" class="icon-button" aria-label={`Visit ${network}`}>
+            <Icon name={icon} width={18} height={18} />
+          </a>
+        ))}
+      </div>
+
+</Section>
