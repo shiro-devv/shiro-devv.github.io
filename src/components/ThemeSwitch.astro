@@ -7,17 +7,6 @@ import { Icon } from "astro-icon/components";
     <Icon name="ri:moon-fill" class="hidden dark:block" width={18} height={18} />
     <Icon name="ri:sun-fill" class="dark:hidden" width={18} height={18} />
   </button>
-  <select
-    id="themeSelect"
-    class="rounded-lg border border-skin-muted/30 bg-skin-button-muted px-3 py-2 text-sm text-skin-base shadow-sm outline-none transition focus:border-skin-hue"
-  >
-    <option value="red">Red</option>
-    <option value="pink">Pink</option>
-    <option value="orange">Orange</option>
-    <option value="cyber">Cyberpunk</option>
-    <option value="green">Green</option>
-    <option value="blue">Blue</option>
-  </select>
 </div>
 
 <style>
@@ -28,12 +17,6 @@ import { Icon } from "astro-icon/components";
 
 <script>
   let isDark = document.documentElement.classList.contains("dark");
-
-  function updateButtonState() {
-    const themeSwitchButton = document.getElementById("themeSwitch");
-    if (!themeSwitchButton) return;
-    themeSwitchButton.setAttribute("aria-pressed", isDark ? "true" : "false");
-  }
 
   function updateButtonState() {
     const themeSwitchButton = document.getElementById("themeSwitch");
@@ -106,7 +89,6 @@ import { Icon } from "astro-icon/components";
     updateTheme();
   } else {
     updateButtonState();
-  }
   }
 
   const storedDataTheme = localStorage.getItem("data-theme") || document.body.getAttribute("data-theme") || "blue";

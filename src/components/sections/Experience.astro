@@ -17,14 +17,7 @@ import { Icon } from "astro-icon/components";
 
         return (
           <li class="rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4">
-            <div data-expanded="false" class="group expand-container space-y-4">
-      ({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }) => {
-        const startYear = new Date(startDate).getFullYear();
-        const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present";
-
-        return (
-          <li class="rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4">
-            <div data-expanded="false" class="expand-container space-y-4">
+            <div class="space-y-4">
               <header class="flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <h4 class="text-lg font-semibold leading-tight text-skin-base">
@@ -51,12 +44,8 @@ import { Icon } from "astro-icon/components";
               {(responsibilities || achievements) && (
                 <div
                   id={detailsId}
-                  class="relative grid max-h-24 gap-3 overflow-hidden pb-1 transition-all duration-300 after:absolute after:bottom-0 after:h-10 after:w-full after:bg-gradient-to-t after:from-skin-fill after:to-transparent after:content-[''] group-data-[expanded=true]:max-h-[60rem] group-data-[expanded=true]:after:hidden"
+                  class="we-details relative grid gap-3 overflow-hidden pb-1"
                 >
-              {summary && <p>{summary}</p>}
-
-              {(responsibilities || achievements) && (
-                <div class="relative grid gap-3 overflow-hidden pb-1 after:absolute after:bottom-0 after:h-10 after:w-full after:bg-gradient-to-t after:from-skin-fill after:to-transparent after:content-[''] group-data-[expanded=true]:after:hidden max-h-24 group-data-[expanded=true]:max-h-[40rem]">
                   {responsibilities && (
                     <div>
                       <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-skin-base">Responsibilities</p>
@@ -80,16 +69,13 @@ import { Icon } from "astro-icon/components";
               <div class="flex flex-wrap items-center gap-3">
                 {(responsibilities || achievements) && (
                   <button
-                    class="expand-button inline-flex items-center gap-1 text-xs text-skin-muted underline transition hover:text-skin-base"
+                    class="we-expand-button inline-flex items-center gap-1 text-xs text-skin-muted underline transition hover:text-skin-base"
                     aria-expanded="false"
                     aria-controls={detailsId}
                     type="button"
                   >
-                    <span class="expand-text">Show more</span>
-                    <Icon name="ri:arrow-down-s-line" class="text-base transition group-data-[expanded=true]:rotate-180" />
-                  <button class="expand-button inline-flex items-center gap-1 text-xs text-skin-muted underline transition hover:text-skin-base">
-                    <span class="expand-text">Show more</span>
-                    <Icon name="ri:arrow-down-s-line" class="text-base" />
+                    <span class="we-expand-text">Show more</span>
+                    <Icon name="ri:arrow-down-s-line" class="we-expand-icon text-base" />
                   </button>
                 )}
 
@@ -110,31 +96,64 @@ import { Icon } from "astro-icon/components";
   </ul>
 </Section>
 
+<style>
+  .we-details {
+    max-height: 6rem;
+    transition: max-height 0.3s ease;
+  }
+
+  .we-details::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    background: linear-gradient(to top, rgb(var(--color-fill)), transparent);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .we-details.is-expanded {
+    max-height: 60rem;
+  }
+
+  .we-details.is-expanded::after {
+    opacity: 0;
+  }
+
+  .we-expand-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .we-expand-icon.is-rotated {
+    transform: rotate(180deg);
+  }
+</style>
+
 <script>
-  const expandButtons = document.querySelectorAll<HTMLButtonElement>(".expand-button");
+  const expandButtons = document.querySelectorAll<HTMLButtonElement>(".we-expand-button");
 
   expandButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const container = button.closest<HTMLElement>(".expand-container");
-      if (!container) return;
-      const expanded = container.dataset.expanded === "true";
-      const nextExpanded = !expanded;
-      container.dataset.expanded = nextExpanded ? "true" : "false";
-      button.setAttribute("aria-expanded", nextExpanded ? "true" : "false");
+      const controlsId = button.getAttribute("aria-controls");
+      if (!controlsId) return;
 
-      const expandText = button.querySelector<HTMLElement>(".expand-text");
+      const panel = document.getElementById(controlsId);
+      const icon = button.querySelector<HTMLElement>(".we-expand-icon");
+      const expandText = button.querySelector<HTMLElement>(".we-expand-text");
+
+      if (!panel) return;
+
+      const isExpanded = panel.classList.contains("is-expanded");
+      const nextExpanded = !isExpanded;
+
+      panel.classList.toggle("is-expanded", nextExpanded);
+      icon?.classList.toggle("is-rotated", nextExpanded);
+      button.setAttribute("aria-expanded", String(nextExpanded));
+
       if (expandText) {
         expandText.textContent = nextExpanded ? "Show less" : "Show more";
-
-  expandButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const container = button.closest<HTMLElement>(".expand-container");
-      if (!container) return;
-      const expanded = container.dataset.expanded === "true";
-      container.dataset.expanded = expanded ? "false" : "true";
-      const expandText = button.querySelector<HTMLElement>(".expand-text");
-      if (expandText) {
-        expandText.textContent = expanded ? "Show more" : "Show less";
       }
     });
   });
