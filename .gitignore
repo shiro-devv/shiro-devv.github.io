@@ -1,27 +1,32 @@
-# build output
-dist/
+name: Deploy to GitHub Pages
 
-# generated types
-.astro/
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
-# dependencies
-node_modules/
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
 
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
-.DS_Store
-
-# local folders
-.history
-.wrangler
-
-.vercel
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+node_modules
