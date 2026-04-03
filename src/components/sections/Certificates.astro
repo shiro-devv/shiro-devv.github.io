@@ -1,32 +1,10 @@
 ---
 import Section from "../Section.astro";
-
-import { education } from "@cv";
 import { certificates } from "@cv";
 ---
 
-<Section className={Astro.props.className} title="Education">
-  <ul class="space-y-3">
-    {education.map(({ institution, startDate, endDate, area }) => {
-      const startYear = new Date(startDate).getFullYear();
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present";
-      return (
-        <li class="rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4">
-          <div class="flex flex-wrap items-start justify-between gap-2">
-            <div>
-              <h4 class="text-base font-semibold text-skin-base">
-                <a target="_blank" class="hover:text-skin-hue">{institution}</a>
-              </h4>
-              <p class="text-sm text-skin-muted">{area}</p>
-            </div>
-            <time class="text-xs text-skin-muted">{startYear} - {endYear}</time>
-          </div>
-        </li>
-      );
-    })}
-  </ul>
-
-  <!-- {certificates.length > 0 && (
+<Section className={Astro.props.className} title="Certificates">
+  {certificates.length > 0 && (
     <>
       <h4 class="text-sm font-semibold uppercase tracking-wide text-skin-base">Certificates</h4>
       <ul class="space-y-3">
@@ -48,5 +26,5 @@ import { certificates } from "@cv";
         })}
       </ul>
     </>
-  )} -->
+  )}
 </Section>

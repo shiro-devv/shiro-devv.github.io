@@ -6,108 +6,36 @@ import Experience from "@/components/sections/Experience.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Skills from "@/components/sections/Skills.astro";
-import KeyboardManager from "@/components/KeyboardManager.astro";
-import ThemeSwitch from "@/components/ThemeSwitch.astro";
 
 import CV, { basics } from "@cv";
 import Education from "@/components/sections/Education.astro";
 import Images from "@/components/sections/Images.astro";
 import Qoute from "@/components/sections/Qoute.astro";
-import Languages from "@/components/sections/Languages.astro";
 import Contacts from "@/components/sections/Contacts.astro";
+import Certificates from "@/components/sections/Certificates.astro";
 const { name, label } = basics;
-
-enum PageLayout {
-  SingleColumn = "single-column",
-  TwoColumn = "two-column",
-  Scroll = "scroll",
-}
 ---
 
 <Layout title={`${name}'s Portfolio - ${label}`}>
-  <main class="mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 sm:px-8 lg:grid-cols-6 lg:gap-8 lg:px-12 lg:py-12">
-    <aside class="space-y-6 lg:col-span-2">
+  <main class="w-full gap-8 px-8 py-10 lg:grid lg:grid-cols-12 lg:gap-10 lg:px-14 lg:py-12">
+    <aside class="space-y-8 lg:col-span-3">
       <Hero />
-      <Qoute />
-      <About />
       <Contacts />
-      <ThemeSwitch />
+      <Education />
+      <Certificates />
+      <Skills />
     </aside>
 
-    <section class="space-y-6 lg:col-span-4">
-      <Skills className="print:hidden" />
-      <Languages />
+    <section class="space-y-8 lg:col-span-5">
+      <Qoute />
+      <About />
       <Experience />
-      <Education />
     </section>
+
+    <aside class="space-y-8 lg:col-span-4">
+      {CV?.images && <Images />}
+      <Projects />
+
+    </aside>
   </main>
-
-  {CV?.pageLayout !== PageLayout.TwoColumn && (
-    <main class="mx-auto w-full max-w-7xl px-4 pb-12 sm:px-8 lg:px-12">
-      {CV?.pageLayout === PageLayout.Scroll ? (
-        <div id="carousel" class="overflow-x-auto rounded-2xl">
-          <div class="flex min-w-max gap-4 pb-3">
-            <Projects className="w-[min(40rem,88vw)] shrink-0 print:hidden" />
-            {CV?.images && <Images className="w-[min(40rem,88vw)] shrink-0 print:hidden" />}
-            <Education className="w-[min(36rem,88vw)] shrink-0" />
-            <Skills className="w-[min(30rem,88vw)] shrink-0 print:hidden" />
-          </div>
-        </div>
-      ) : (
-        <div class="space-y-6">
-          <Projects/>
-          {CV?.images && <Images className="print:hidden" />}
-        </div>
-      )}
-    </main>
-  )}
-
-  <!-- <KeyboardManager /> -->
 </Layout>
-
-<script>
-  const carousel = document.querySelector<HTMLElement>("#carousel");
-
-  if (carousel) {
-    let isScrolling = true;
-    const scrollSpeed = 1;
-    let direction = 1;
-    let pauseTimeout = 0;
-
-    const startAutoScroll = () => {
-      const scroll = () => {
-        if (!isScrolling) return;
-
-        if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth || carousel.scrollLeft <= 0) {
-          direction *= -1;
-          isScrolling = false;
-          window.clearTimeout(pauseTimeout);
-          pauseTimeout = window.setTimeout(() => {
-            isScrolling = true;
-            requestAnimationFrame(scroll);
-          }, 1200);
-          return;
-        }
-
-        carousel.scrollLeft += scrollSpeed * direction;
-        requestAnimationFrame(scroll);
-      };
-
-      requestAnimationFrame(scroll);
-    };
-
-    const handleUserInteraction = () => {
-      isScrolling = false;
-      window.clearTimeout(pauseTimeout);
-      pauseTimeout = window.setTimeout(() => {
-        isScrolling = true;
-        startAutoScroll();
-      }, 1200);
-    };
-
-    startAutoScroll();
-    carousel.addEventListener("mousedown", handleUserInteraction);
-    carousel.addEventListener("wheel", handleUserInteraction);
-    carousel.addEventListener("touchstart", handleUserInteraction);
-  }
-</script>

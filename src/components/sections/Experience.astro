@@ -13,7 +13,6 @@ import { Icon } from "astro-icon/components";
       ) => {
         const startYear = startDate;
         const endYear = endDate != null ? endDate : "Present";
-        const detailsId = `experience-details-${index}`;
 
         return (
           <li class="rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4">
@@ -41,44 +40,25 @@ import { Icon } from "astro-icon/components";
                   <p>{summary}</p>
                 ))}
 
-              {(responsibilities || achievements) && (
-                <div
-                  id={detailsId}
-                  class="we-details relative grid gap-3 overflow-hidden pb-1"
-                >
-                  {responsibilities && (
-                    <div>
-                      <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-skin-base">Responsibilities</p>
-                      <ul class="ml-4 list-disc space-y-1">
-                        {responsibilities.map((responsibility) => <li class="text-sm text-skin-muted">{responsibility}</li>)}
-                      </ul>
-                    </div>
-                  )}
+              {responsibilities && (
+                <div class="space-y-2">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-skin-base">Responsibilities</p>
+                  <ul class="ml-4 list-disc space-y-1">
+                    {responsibilities.map((responsibility) => <li class="text-sm text-skin-muted">{responsibility}</li>)}
+                  </ul>
+                </div>
+              )}
 
-                  {achievements && (
-                    <div>
-                      <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-skin-base">Achievements</p>
-                      <ul class="ml-4 list-disc space-y-1">
-                        {achievements.map((achievement) => <li class="text-sm text-skin-muted">{achievement}</li>)}
-                      </ul>
-                    </div>
-                  )}
+              {achievements && (
+                <div class="space-y-2">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-skin-base">Achievements</p>
+                  <ul class="ml-4 list-disc space-y-1">
+                    {achievements.map((achievement) => <li class="text-sm text-skin-muted">{achievement}</li>)}
+                  </ul>
                 </div>
               )}
 
               <div class="flex flex-wrap items-center gap-3">
-                {(responsibilities || achievements) && (
-                  <button
-                    class="we-expand-button inline-flex items-center gap-1 text-xs text-skin-muted underline transition hover:text-skin-base"
-                    aria-expanded="false"
-                    aria-controls={detailsId}
-                    type="button"
-                  >
-                    <span class="we-expand-text">Show more</span>
-                    <Icon name="ri:arrow-down-s-line" class="we-expand-icon text-base" />
-                  </button>
-                )}
-
                 <ul class="flex flex-wrap gap-2" aria-label="Technologies used">
                   {skills &&
                     Object.entries(skills).map(([label, icon]) => (
@@ -95,66 +75,3 @@ import { Icon } from "astro-icon/components";
     )}
   </ul>
 </Section>
-
-<style>
-  .we-details {
-    max-height: 6rem;
-    transition: max-height 0.3s ease;
-  }
-
-  .we-details::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2.5rem;
-    background: linear-gradient(to top, rgb(var(--color-fill)), transparent);
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .we-details.is-expanded {
-    max-height: 60rem;
-  }
-
-  .we-details.is-expanded::after {
-    opacity: 0;
-  }
-
-  .we-expand-icon {
-    transition: transform 0.2s ease;
-  }
-
-  .we-expand-icon.is-rotated {
-    transform: rotate(180deg);
-  }
-</style>
-
-<script>
-  const expandButtons = document.querySelectorAll<HTMLButtonElement>(".we-expand-button");
-
-  expandButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const controlsId = button.getAttribute("aria-controls");
-      if (!controlsId) return;
-
-      const panel = document.getElementById(controlsId);
-      const icon = button.querySelector<HTMLElement>(".we-expand-icon");
-      const expandText = button.querySelector<HTMLElement>(".we-expand-text");
-
-      if (!panel) return;
-
-      const isExpanded = panel.classList.contains("is-expanded");
-      const nextExpanded = !isExpanded;
-
-      panel.classList.toggle("is-expanded", nextExpanded);
-      icon?.classList.toggle("is-rotated", nextExpanded);
-      button.setAttribute("aria-expanded", String(nextExpanded));
-
-      if (expandText) {
-        expandText.textContent = nextExpanded ? "Show less" : "Show more";
-      }
-    });
-  });
-</script>
