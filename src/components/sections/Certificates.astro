@@ -6,7 +6,6 @@ import { certificates } from "@cv";
 <Section className={Astro.props.className} title="Certificates">
   {certificates.length > 0 && (
     <>
-      <h4 class="text-sm font-semibold uppercase tracking-wide text-skin-base">Certificates</h4>
       <ul class="space-y-3">
         {certificates.map(({ name, date, issuer }) => {
           const certificateYear = new Date(date).getFullYear();

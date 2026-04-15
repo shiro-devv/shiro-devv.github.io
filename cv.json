@@ -105,15 +105,36 @@
       "endDate": "2028"
     },
     {
-      "institution": "St. Paul College of Ilocos Sur",
+      "institution": "St. Paul College of Ilocos Sur: Senior High School",
       "url": "",
-      "area": "Regular Student",
+      "area": "General Academic Strand Student",
       "studyType": "Full-time student",
-      "startDate": "2011",
+      "startDate": "2023",
       "endDate": "2024"
+    },
+    {
+      "institution": "St. Paul College of Ilocos Sur: Junior High School",
+      "url": "",
+      "area": "Student",
+      "studyType": "Full-time student",
+      "startDate": "2019",
+      "endDate": "2022"
+    },
+    {
+      "institution": "St. Paul College of Ilocos Sur: Elementary",
+      "url": "",
+      "area": "Student",
+      "studyType": "Full-time student",
+      "startDate": "2012",
+      "endDate": "2018"
     }
   ],
   "certificates": [
+    {
+      "name": "IT Olympics.",
+      "date": "2025-23-11",
+      "issuer": "University of Makati"
+    },
     {
       "name": "Code Smarter: A Begginers Guide to Progamming Practices",
       "date": "2024-27-11",
