@@ -4,70 +4,85 @@ import { work } from "@cv";
 import { Icon } from "astro-icon/components";
 ---
 
-<Section className={Astro.props.className} title="Experience">
-  <ul class="space-y-5">
+<Section id="experience" className={Astro.props.className} eyebrow="Career" title="Experience">
+  <ul class="stagger-group space-y-4">
     {work.map(
       (
         { name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type },
-        index,
+        i,
       ) => {
         const startYear = startDate;
         const endYear = endDate != null ? endDate : "Present";
 
         return (
-          <li class="rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4">
+          <li class="stagger-item glass-card" style={`--i: ${i}`}>
             <div class="space-y-4">
-              <header class="flex flex-wrap items-start justify-between gap-2">
+              <header class="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h4 class="text-lg font-semibold leading-tight text-skin-base">
-                    {position} @ {url ? <a class="text-skin-hue hover:underline" href={url} target="_blank">{name}</a> : name}
+                  <h4 class="text-base font-semibold leading-tight text-skin-base">
+                    {position}{" "}
+                    {url ? (
+                      <a class="text-skin-hue transition-colors duration-500 ease-spring hover:opacity-70" href={url} target="_blank">
+                        @ {name}
+                      </a>
+                    ) : (
+                      <span class="text-skin-muted">@ {name}</span>
+                    )}
                   </h4>
                   {(location || location_type) && (
-                    <p class="text-xs text-skin-muted">{location} {location && location_type && "·"} {location_type}</p>
+                    <p class="mt-0.5 text-xs text-skin-muted">
+                      {location}{location && location_type && " · "}{location_type}
+                    </p>
                   )}
                 </div>
-                <p class="rounded-full bg-skin-hue/10 px-3 py-1 text-xs font-medium text-skin-hue">
-                  {startYear} - {endYear}
-                </p>
+                <span class="shrink-0 rounded-full bg-skin-hue/10 px-3 py-1 text-[11px] font-medium text-skin-hue">
+                  {startYear} &mdash; {endYear}
+                </span>
               </header>
 
               {summary &&
                 (Array.isArray(summary) ? (
-                  <ul class="ml-4 list-disc space-y-1">
-                    {summary.map((item) => <li class="text-sm text-skin-muted">{item}</li>)}
+                  <ul class="ml-4 space-y-1.5">
+                    {summary.map((item) => (
+                      <li class="list-disc text-sm text-skin-muted marker:text-skin-hue/40">{item}</li>
+                    ))}
                   </ul>
                 ) : (
-                  <p>{summary}</p>
+                  <p class="text-sm text-skin-muted">{summary}</p>
                 ))}
 
               {responsibilities && (
                 <div class="space-y-2">
-                  <p class="text-xs font-semibold uppercase tracking-wide text-skin-base">Responsibilities</p>
-                  <ul class="ml-4 list-disc space-y-1">
-                    {responsibilities.map((responsibility) => <li class="text-sm text-skin-muted">{responsibility}</li>)}
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-skin-muted">Responsibilities</p>
+                  <ul class="ml-4 space-y-1.5">
+                    {responsibilities.map((responsibility) => (
+                      <li class="list-disc text-sm text-skin-muted marker:text-skin-hue/40">{responsibility}</li>
+                    ))}
                   </ul>
                 </div>
               )}
 
               {achievements && (
                 <div class="space-y-2">
-                  <p class="text-xs font-semibold uppercase tracking-wide text-skin-base">Achievements</p>
-                  <ul class="ml-4 list-disc space-y-1">
-                    {achievements.map((achievement) => <li class="text-sm text-skin-muted">{achievement}</li>)}
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-skin-muted">Achievements</p>
+                  <ul class="ml-4 space-y-1.5">
+                    {achievements.map((achievement) => (
+                      <li class="list-disc text-sm text-skin-muted marker:text-skin-hue/40">{achievement}</li>
+                    ))}
                   </ul>
                 </div>
               )}
 
-              <div class="flex flex-wrap items-center gap-3">
-                <ul class="flex flex-wrap gap-2" aria-label="Technologies used">
-                  {skills &&
-                    Object.entries(skills).map(([label, icon]) => (
-                      <li class="tag">
-                        {icon && <Icon name={icon} width={14} height={14} />} <span>{label}</span>
-                      </li>
-                    ))}
-                </ul>
-              </div>
+              {skills && Object.keys(skills).length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {Object.entries(skills).map(([label, icon]) => (
+                    <span class="tag">
+                      {icon && <Icon name={icon} width={12} height={12} />}
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </li>
         );

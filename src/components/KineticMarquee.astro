@@ -1,0 +1,14 @@
+---
+const { text = "Developer · Creator · Builder · Designer · Thinker · " } = Astro.props;
+---
+
+<div class="pointer-events-none w-full select-none overflow-hidden py-4 opacity-[0.04] dark:opacity-[0.03]">
+  <div class="marquee-track flex whitespace-nowrap">
+    <span class="font-display text-[clamp(4rem,15vw,10rem)] font-bold uppercase leading-none tracking-tight text-skin-base">
+      {text}
+    </span>
+    <span class="font-display text-[clamp(4rem,15vw,10rem)] font-bold uppercase leading-none tracking-tight text-skin-base">
+      {text}
+    </span>
+  </div>
+</div>

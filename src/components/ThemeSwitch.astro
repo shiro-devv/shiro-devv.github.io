@@ -2,12 +2,10 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="inline-flex items-center gap-2 print:hidden">
-  <button id="themeSwitch" class="icon-button" aria-label="Toggle dark mode">
-    <Icon name="ri:moon-fill" class="hidden dark:block" width={18} height={18} />
-    <Icon name="ri:sun-fill" class="dark:hidden" width={18} height={18} />
-  </button>
-</div>
+<button id="themeSwitch" class="icon-button !h-8 !w-8" aria-label="Toggle dark mode">
+  <Icon name="ri:moon-fill" class="hidden dark:block" width={15} height={15} />
+  <Icon name="ri:sun-fill" class="dark:hidden" width={15} height={15} />
+</button>
 
 <style>
   :global(.dark) {
@@ -53,13 +51,13 @@ import { Icon } from "astro-icon/components";
           clipPath: isDark ? [...clipPath].reverse() : clipPath,
         },
         {
-          duration: 350,
-          easing: "ease-out",
+          duration: 500,
+          easing: "cubic-bezier(0.32, 0.72, 0, 1)",
           pseudoElement: isDark ? "::view-transition-old(root)" : "::view-transition-new(root)",
         },
       );
     });
-  }
+  };
 
   function updateTheme() {
     document.documentElement.classList.toggle("dark", isDark);
@@ -67,33 +65,17 @@ import { Icon } from "astro-icon/components";
     updateButtonState();
   }
 
-  function updateDataTheme(value: string) {
-    document.body.setAttribute("data-theme", value);
-    localStorage.setItem("data-theme", value);
-  }
-
   const themeSwitchButton = document.getElementById("themeSwitch");
   if (themeSwitchButton) {
     themeSwitchButton.addEventListener("click", toggleDark);
   }
 
-  const themeSelect = document.getElementById("themeSelect") as HTMLSelectElement;
-  if (themeSelect) {
-    themeSelect.addEventListener("change", (e) => {
-      updateDataTheme((e.target as HTMLSelectElement).value);
-    });
-  }
-
-  if (localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+  if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
     isDark = true;
     updateTheme();
   } else {
     updateButtonState();
   }
-
-  const storedDataTheme = localStorage.getItem("data-theme") || document.body.getAttribute("data-theme") || "blue";
-  updateDataTheme(storedDataTheme);
-  if (themeSelect) themeSelect.value = storedDataTheme;
 </script>
 
 <style is:global>

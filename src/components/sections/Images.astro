@@ -6,21 +6,23 @@ import CV from "@cv";
 const images = CV.images!;
 ---
 
-<Section className={Astro.props.className} title="Gallery">
-  {images?.intro && <p class="text-sm text-skin-muted">{images.intro}</p>}
-  <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-    {images.list.map(({ image, alt, desc }) => (
-      <div class="group relative overflow-hidden rounded-xl border border-skin-muted/30 bg-skin-button-muted/60">
-        <a href={image} data-fancybox="gallery" data-caption={desc} class="block aspect-square">
-          <div class="absolute inset-0 animate-pulse bg-skin-muted/20"></div>
-          <Image
-            src={image}
-            alt={alt}
-            width={500}
-            height={500}
-            class="relative h-full w-full object-cover transition duration-300 group-hover:scale-105"
-          />
-        </a>
+<Section id="gallery" className={Astro.props.className} eyebrow="Photography" title="Gallery">
+  {images?.intro && <p class="text-sm leading-relaxed text-skin-muted">{images.intro}</p>}
+  <div class="stagger-group grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+    {images.list.map(({ image, alt, desc }, i) => (
+      <div class="stagger-item outer-shell overflow-hidden" style={`--i: ${i}`}>
+        <div class="inner-core !p-1">
+          <a href={image} data-fancybox="gallery" data-caption={desc} class="block aspect-square overflow-hidden rounded-[calc(1.5rem-4px)]">
+            <div class="absolute inset-0 animate-pulse bg-skin-muted/10"></div>
+            <Image
+              src={image}
+              alt={alt}
+              width={500}
+              height={500}
+              class="h-full w-full object-cover transition-all duration-700 ease-spring hover:scale-105"
+            />
+          </a>
+        </div>
       </div>
     ))}
   </div>

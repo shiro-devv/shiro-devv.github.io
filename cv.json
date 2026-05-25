@@ -43,13 +43,13 @@
       },
       {
         "network": "GitHub",
-        "icon": "mdi:github",
+        "icon": "ri:github-fill",
         "username": "shen-desuu-dev",
         "url": "https://github.com/shiro-devv"
       },
       {
         "network": "Email",
-        "icon": "mdi:email",
+        "icon": "ri:mail-line",
         "username": "shen.does.dev@gmail.com",
         "url": "mailto:shen.does.dev@gmail.com"
       }
@@ -169,7 +169,7 @@
     },
     {
       "name": "GitHub",
-      "icon": "mdi:github",
+      "icon": "ri:github-fill",
       "level": "Expert"
     },
     {

@@ -1,0 +1,120 @@
+---
+import ThemeSwitch from "./ThemeSwitch.astro";
+---
+
+<div
+  id="fluid-island"
+  class="fixed top-5 left-1/2 z-50 -translate-x-1/2"
+>
+  <div
+    id="island-bar"
+    class="flex items-center gap-6 rounded-full border border-white/10 bg-white/70 px-5 py-2 backdrop-blur-2xl dark:border-white/[0.06] dark:bg-black/70"
+  >
+    <a href="#" class="shrink-0 font-display text-sm font-semibold tracking-tight text-skin-base">
+      Shiro
+    </a>
+
+    <div class="hidden items-center gap-6 md:flex">
+      <a href="#about" class="text-sm text-skin-muted transition-colors duration-500 ease-spring hover:text-skin-base">About</a>
+      <a href="#experience" class="text-sm text-skin-muted transition-colors duration-500 ease-spring hover:text-skin-base">Experience</a>
+      <a href="#projects" class="text-sm text-skin-muted transition-colors duration-500 ease-spring hover:text-skin-base">Projects</a>
+      <a href="#gallery" class="text-sm text-skin-muted transition-colors duration-500 ease-spring hover:text-skin-base">Gallery</a>
+      <a href="#contact" class="text-sm text-skin-muted transition-colors duration-500 ease-spring hover:text-skin-base">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <ThemeSwitch />
+      <button
+        id="hamburger-btn"
+        class="relative z-50 flex h-8 w-8 flex-col items-center justify-center md:hidden"
+        aria-label="Menu"
+      >
+        <span
+          class="h-[1.5px] w-5 origin-center rounded-full bg-current transition-all duration-500 ease-spring"
+        ></span>
+        <span
+          class="mt-[4px] h-[1.5px] w-5 origin-center rounded-full bg-current transition-all duration-500 ease-spring"
+        ></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  id="nav-overlay"
+  class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white/80 opacity-0 backdrop-blur-3xl transition-all duration-700 ease-spring pointer-events-none dark:bg-black/80"
+>
+  <nav class="flex flex-col items-center gap-10">
+    <a
+      href="#about"
+      class="nav-link font-display text-3xl font-semibold tracking-tight text-skin-base opacity-0 transition-all duration-700 ease-spring sm:text-4xl"
+      style="transform: translateY(48px)"
+    >About</a>
+    <a
+      href="#experience"
+      class="nav-link font-display text-3xl font-semibold tracking-tight text-skin-base opacity-0 transition-all duration-700 ease-spring sm:text-4xl"
+      style="transform: translateY(48px); transition-delay: 80ms"
+    >Experience</a>
+    <a
+      href="#projects"
+      class="nav-link font-display text-3xl font-semibold tracking-tight text-skin-base opacity-0 transition-all duration-700 ease-spring sm:text-4xl"
+      style="transform: translateY(48px); transition-delay: 160ms"
+    >Projects</a>
+    <a
+      href="#gallery"
+      class="nav-link font-display text-3xl font-semibold tracking-tight text-skin-base opacity-0 transition-all duration-700 ease-spring sm:text-4xl"
+      style="transform: translateY(48px); transition-delay: 240ms"
+    >Gallery</a>
+    <a
+      href="#contact"
+      class="nav-link font-display text-3xl font-semibold tracking-tight text-skin-base opacity-0 transition-all duration-700 ease-spring sm:text-4xl"
+      style="transform: translateY(48px); transition-delay: 320ms"
+    >Contact</a>
+  </nav>
+</div>
+
+<script>
+  (function () {
+  const hamburger = document.getElementById("hamburger-btn") as HTMLElement | null;
+  const overlay = document.getElementById("nav-overlay") as HTMLElement | null;
+  if (!hamburger || !overlay) return;
+
+  const links = Array.from(overlay.querySelectorAll(".nav-link")) as HTMLElement[];
+  const spans = Array.from(hamburger.querySelectorAll("span")) as HTMLElement[];
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    overlay!.classList.remove("pointer-events-none", "opacity-0");
+    spans[0].style.transform = "rotate(45deg) translateY(3.5px)";
+    spans[1].style.transform = "rotate(-45deg) translateY(-3.5px)";
+    links.forEach((link) => {
+      link.style.opacity = "1";
+      link.style.transform = "translateY(0)";
+    });
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    overlay!.classList.add("opacity-0");
+    overlay!.classList.add("pointer-events-none");
+    spans[0].style.transform = "";
+    spans[1].style.transform = "";
+    links.forEach((link) => {
+      link.style.opacity = "0";
+      link.style.transform = "translateY(48px)";
+    });
+  }
+
+  hamburger.addEventListener("click", () => (isOpen ? closeMenu() : openMenu()));
+
+  links.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) closeMenu();
+  });
+  })();
+</script>

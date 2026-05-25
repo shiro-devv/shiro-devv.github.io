@@ -4,21 +4,21 @@ import Section from "../Section.astro";
 import { education } from "@cv";
 ---
 
-<Section className={Astro.props.className} title="Education">
-  <ul class="space-y-3">
-    {education.map(({ institution, startDate, endDate, area }) => {
+<Section className={Astro.props.className} eyebrow="Learning" title="Education">
+  <ul class="stagger-group space-y-3">
+    {education.map(({ institution, startDate, endDate, area }, i) => {
       const startYear = new Date(startDate).getFullYear();
       const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present";
       return (
-        <li class="rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4">
+        <li class="stagger-item glass-card" style={`--i: ${i}`}>
           <div class="flex flex-wrap items-start justify-between gap-2">
             <div>
-              <h4 class="text-base font-semibold text-skin-base">
-                <a target="_blank" class="hover:text-skin-hue">{institution}</a>
-              </h4>
-              <p class="text-sm text-skin-muted">{area}</p>
+              <h4 class="text-sm font-semibold text-skin-base">{institution}</h4>
+              <p class="mt-0.5 text-xs text-skin-muted">{area}</p>
             </div>
-            <time class="text-xs text-skin-muted">{startYear} - {endYear}</time>
+            <span class="shrink-0 rounded-full bg-skin-hue/8 px-2.5 py-0.5 text-[11px] font-medium text-skin-hue">
+              {startYear} &mdash; {endYear}
+            </span>
           </div>
         </li>
       );

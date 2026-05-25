@@ -9,21 +9,26 @@ import { Icon } from "astro-icon/components";
       href="https://github.com/shiro-devv"
       target="_blank"
       id="github-link"
-      class="flex items-center gap-3 rounded-xl border border-skin-muted/30 bg-skin-fill/40 p-4 transition hover:-translate-y-0.5 hover:shadow-md"
+      class="glass-card group flex items-center gap-3 transition-all duration-500 ease-spring hover:-translate-y-0.5"
     >
-      <Icon name="mdi:github" class="h-8 w-8 text-skin-hue" />
-      <div class="flex flex-col">
-        <span class="font-semibold text-skin-base">shiro-devv</span>
-        <span id="github-stats" class="text-sm text-skin-muted" aria-live="polite">Loading...</span>
+      <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-skin-hue/10">
+        <Icon name="ri:github-fill" class="h-5 w-5 text-skin-hue" />
+        <span class="pulse-dot absolute -right-0.5 -top-0.5"></span>
       </div>
-      <Icon name="ri:arrow-right-up-line" class="ml-auto h-5 w-5 text-skin-muted" />
+      <div class="flex flex-col">
+        <span class="text-sm font-semibold text-skin-base">shiro-devv</span>
+        <span id="github-stats" class="text-xs text-skin-muted" aria-live="polite">Loading...</span>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0 text-skin-muted transition-transform duration-500 ease-spring group-hover:translate-x-1">
+        <path d="M7 17l9.2-9.2M17 17V7H7" />
+      </svg>
     </a>
   </div>
 </Section>
 
 <script>
   const GITHUB_STATS_CACHE_KEY = "github-stats-cache";
-  const CACHE_DURATION_MS = 10 * 60 * 1000; // 10 mins
+  const CACHE_DURATION_MS = 10 * 60 * 1000;
 
   async function fetchGithubData() {
     const statsEl = document.getElementById('github-stats');
@@ -48,7 +53,7 @@ import { Icon } from "astro-icon/components";
       if (!response.ok) throw new Error('Failed to fetch');
 
       const data = await response.json();
-      const formatted = `${data.public_repos} repos · ${data.followers} followers`;
+      const formatted = `${data.public_repos} repos &middot; ${data.followers} followers`;
       statsEl.textContent = formatted;
       localStorage.setItem(
         GITHUB_STATS_CACHE_KEY,

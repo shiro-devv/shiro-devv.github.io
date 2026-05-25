@@ -13,29 +13,46 @@ import Images from "@/components/sections/Images.astro";
 import Qoute from "@/components/sections/Qoute.astro";
 import Contacts from "@/components/sections/Contacts.astro";
 import Certificates from "@/components/sections/Certificates.astro";
+import GithubContributions from "@/components/sections/GithubContributions.astro";
+import KineticMarquee from "@/components/KineticMarquee.astro";
 const { name, label } = basics;
 ---
 
 <Layout title={`${name}'s Portfolio - ${label}`}>
-  <main class="w-full gap-8 px-8 py-10 lg:grid lg:grid-cols-12 lg:gap-10 lg:px-14 lg:py-12">
-    <aside class="space-y-8 lg:col-span-3">
-      <Hero />
-      <Skills />
-      <Education />
-      <Certificates />
-      <Contacts />
-    </aside>
+  <main class="mx-auto w-full max-w-7xl px-4 py-28 md:py-36">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
+      <!-- Hero: spans full width -->
+      <div class="md:col-span-12">
+        <Hero />
+      </div>
 
-    <section class="space-y-8 lg:col-span-5">
-      <Qoute />
-      <About />
-      <Experience />
-    </section>
+      <!-- Quote + About: left column, 7 cols -->
+      <div class="flex flex-col gap-6 md:col-span-7 md:gap-8">
+        <Qoute />
+        <About />
+        <Experience />
+      </div>
 
-    <aside class="space-y-8 lg:col-span-4">
-      {CV?.images && <Images />}
-      <Projects />
+      <!-- Side content: right column, 5 cols -->
+      <div class="flex flex-col gap-6 md:col-span-5 md:gap-8">
+        <GithubContributions />
+        <Skills />
+        <Education />
+        <Certificates />
+      </div>
 
-    </aside>
+      <!-- Projects + Images: full width bottom row -->
+      <div class="flex flex-col gap-6 md:col-span-12 md:gap-8">
+        <Projects />
+        {CV?.images && <Images />}
+      </div>
+
+      <!-- Contact: full width -->
+      <div class="md:col-span-12">
+        <Contacts />
+      </div>
+    </div>
+
+    <KineticMarquee />
   </main>
 </Layout>

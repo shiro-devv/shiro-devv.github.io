@@ -4,6 +4,43 @@ import CV from "@cv";
 const { qoute } = CV.basics;
 ---
 
-<Section title="Qoute">
-  <p class="text-sm leading-7 text-skin-muted sm:text-base">{qoute}</p>
+<Section eyebrow="Motto" title="Quote">
+  <blockquote class="text-balance text-base leading-relaxed text-skin-muted sm:text-lg" id="typewriter-quote">
+    &ldquo;{qoute}&rdquo;
+  </blockquote>
 </Section>
+
+<script>
+  (function () {
+    const el = document.getElementById("typewriter-quote") as HTMLElement | null;
+    if (!el) return;
+
+    const fullText = el.textContent || "";
+    el.textContent = "";
+    el.classList.add("typewriter-cursor");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            observer.unobserve(el!);
+            let i = 0;
+            function type() {
+              if (i <= fullText.length) {
+                el!.textContent = fullText.slice(0, i);
+                i++;
+                const delay = fullText[i - 1] === " " || fullText[i - 1] === "," ? 30 : 20;
+                setTimeout(type, delay);
+              } else {
+                el!.classList.remove("typewriter-cursor");
+              }
+            }
+            type();
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+  })();
+</script>

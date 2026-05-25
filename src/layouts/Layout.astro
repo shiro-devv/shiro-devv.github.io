@@ -1,6 +1,6 @@
 ---
 import ArtPlums from "@/components/ArtPlums.astro";
-import ThemeSwitch from "@/components/ThemeSwitch.astro";
+import FluidIsland from "@/components/FluidIsland.astro";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "../globals.css";
 import CV from "@cv";
@@ -36,68 +36,59 @@ const { image, summary, url, theme } = CV.basics;
     <meta name="twitter:description" content={summary} />
     <meta name="twitter:image" content="" />
     {CV?.analyticsCode && <script is:inline src={CV.analyticsCode} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700,800&display=swap" rel="stylesheet" />
   </head>
   <body data-theme={theme} class="relative min-h-screen bg-skin-fill text-skin-base antialiased">
-    <div class="fixed top-4 right-4 z-50 print:hidden">
-      <ThemeSwitch />
-    </div>
-    
-    <!-- Floating gradient circles -->
     <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div class="floating-circle absolute left-[10%] top-[20%] h-64 w-64 rounded-full bg-gradient-to-br from-skin-hue/20 to-skin-secondary/20 blur-3xl animate-float-1"></div>
-      <div class="floating-circle absolute left-[60%] top-[10%] h-48 w-48 rounded-full bg-gradient-to-br from-skin-secondary/20 to-skin-hue/20 blur-3xl animate-float-2"></div>
-      <div class="floating-circle absolute left-[30%] top-[60%] h-56 w-56 rounded-full bg-gradient-to-br from-skin-hue/15 to-skin-secondary/15 blur-3xl animate-float-3"></div>
-      <div class="floating-circle absolute right-[15%] top-[40%] h-40 w-40 rounded-full bg-gradient-to-br from-skin-secondary/20 to-skin-hue/20 blur-3xl animate-float-4"></div>
-      <div class="floating-circle absolute right-[25%] top-[70%] h-52 w-52 rounded-full bg-gradient-to-br from-skin-hue/15 to-skin-secondary/15 blur-3xl animate-float-5"></div>
-      <div class="floating-circle absolute left-[5%] top-[80%] h-36 w-36 rounded-full bg-gradient-to-br from-skin-secondary/20 to-skin-hue/20 blur-3xl animate-float-6"></div>
+      <div class="absolute left-[5%] top-[10%] h-[30rem] w-[30rem] rounded-full blur-[120px] animate-float-1" style="background: radial-gradient(circle at 30% 40%, rgba(var(--color), 0.1), transparent 70%)"></div>
+      <div class="absolute right-[5%] top-[30%] h-[25rem] w-[25rem] rounded-full blur-[120px] animate-float-2" style="background: radial-gradient(circle at 70% 30%, rgba(var(--color-secondary, 99, 102, 241), 0.08), transparent 70%)"></div>
+      <div class="absolute left-[15%] bottom-[20%] h-[20rem] w-[20rem] rounded-full blur-[120px] animate-float-3" style="background: radial-gradient(circle at 20% 60%, rgba(var(--color), 0.06), transparent 70%)"></div>
+      <div class="absolute right-[20%] top-[60%] h-[18rem] w-[18rem] rounded-full blur-[120px] animate-float-4" style="background: radial-gradient(circle at 80% 50%, rgba(var(--color-secondary, 99, 102, 241), 0.06), transparent 70%)"></div>
+      <div class="absolute left-[40%] top-[50%] h-[22rem] w-[22rem] rounded-full blur-[120px] animate-float-5" style="background: radial-gradient(circle at 40% 40%, rgba(var(--color), 0.05), transparent 70%)"></div>
+      <div class="absolute right-[10%] bottom-[5%] h-[16rem] w-[16rem] rounded-full blur-[120px] animate-float-6" style="background: radial-gradient(circle at 60% 60%, rgba(var(--color-secondary, 99, 102, 241), 0.05), transparent 70%)"></div>
     </div>
-    
+
+    <FluidIsland />
+
     <ArtPlums />
     <slot />
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -60px 0px" },
+        );
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+        const staggerObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const items = entry.target.querySelectorAll(".stagger-item");
+                items.forEach((item, i) => {
+                  setTimeout(() => item.classList.add("revealed"), i * 80);
+                });
+                staggerObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+        );
+        document.querySelectorAll(".stagger-group").forEach((el) => staggerObserver.observe(el));
+      });
+    </script>
   </body>
 </html>
-
-<style is:global>
-  @keyframes float-1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -30px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.95); }
-  }
-  
-  @keyframes float-2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-40px, 20px) scale(1.05); }
-    66% { transform: translate(30px, -20px) scale(0.9); }
-  }
-  
-  @keyframes float-3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(20px, 40px) scale(1.15); }
-    66% { transform: translate(-30px, -20px) scale(0.85); }
-  }
-  
-  @keyframes float-4 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-25px, -35px) scale(1.1); }
-    66% { transform: translate(35px, 15px) scale(0.95); }
-  }
-  
-  @keyframes float-5 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(15px, -25px) scale(0.9); }
-    66% { transform: translate(-40px, 10px) scale(1.1); }
-  }
-  
-  @keyframes float-6 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-30px, 25px) scale(1.05); }
-    66% { transform: translate(20px, -35px) scale(0.95); }
-  }
-  
-  .animate-float-1 { animation: float-1 20s ease-in-out infinite; }
-  .animate-float-2 { animation: float-2 25s ease-in-out infinite; }
-  .animate-float-3 { animation: float-3 18s ease-in-out infinite; }
-  .animate-float-4 { animation: float-4 22s ease-in-out infinite; }
-  .animate-float-5 { animation: float-5 28s ease-in-out infinite; }
-  .animate-float-6 { animation: float-6 24s ease-in-out infinite; }
-</style>

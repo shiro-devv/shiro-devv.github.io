@@ -1,8 +1,14 @@
 ---
-const { className, title } = Astro.props;
+const { className, title, eyebrow, id } = Astro.props;
 ---
 
-<section class:list={["panel flex flex-col gap-4 print:gap-2", className]}>
-  {title && <h3 class="section-title print:text-lg">{title}</h3>}
-  <slot />
+<section
+  {id}
+  class:list={["outer-shell reveal", className]}
+>
+  <div class="inner-core flex flex-col gap-4 print:gap-2">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    {title && <h3 class="section-heading print:text-lg">{title}</h3>}
+    <slot />
+  </div>
 </section>
