@@ -1,76 +1,91 @@
-## Print-friendly portfolio CV
+# shiro-devv.github.io
 
-![preview](https://github.com/user-attachments/assets/44c47034-06e4-412a-b9dd-014593b32215)
+**Personal portfolio & CV** — an Awwwards-tier digital identity built with Astro, Tailwind CSS, and a obsessive attention to micro-interaction detail.
 
-## 📄 About
+![Preview](https://github.com/user-attachments/assets/44c47034-06e4-412a-b9dd-014593b32215)
 
-This project is refactored from the original [**dev-portfolio**](https://github.com/Smilesharks/dev-portfolio) project, thanks for his work.
+---
 
-I use iconify instead of SVG icons for better dev experience.
+## Design
 
-Thanks for antfu's cool animations.
+| Layer | Approach |
+|---|---|
+| **Vibe** | Ethereal Glass — deep OLED backgrounds, radial mesh gradient orbs, frosted glass panels |
+| **Layout** | Asymmetrical Bento — CSS Grid with varying card spans, massive whitespace (`py-28 md:py-36`) |
+| **Typography** | Geist (body) + Clash Display (headings) — zero generic fonts |
+| **Icons** | Remix Line — ultra-light strokes only |
+| **Architecture** | Double-Bezel (Doppelrand) — nested outer-shell/inner-core with concentric radii, hairlines, and inset highlights |
+| **Navigation** | Fluid Island pill nav — hamburger morphs to X, full-screen overlay with staggered link reveals, integrated theme toggle |
 
-## 🛠️ Stack
+### Motion
 
-- [**Astro**](https://astro.build/) - The next-gen web framework.
-- [**Typescript**](https://www.typescriptlang.org/) - JavaScript with type syntax.
-- [**TailwindCSS**](https://tailwindcss.com/) - Utility-first CSS framework.
-- [**Iconify**](https://iconify.design/) - Icon library.
-- [**FancyBox**](https://fancyapps.com/fancybox/3/) - Image viewer.
-- [**Ninja Keys**](https://github.com/ssleptsov/ninja-keys) - Dropdown menu with keyboard shortcuts made in pure JavaScript.
+- **Scroll reveals** — IntersectionObserver-driven fade-up with blur (`cubic-bezier(0.16, 1, 0.3, 1)`)
+- **Stagger cascades** — list items animate in sequentially (`--i * 80ms` delay)
+- **Typewriter** — hero subtitle cycles through roles; quote types out on scroll-into-view
+- **Kinetic marquee** — endless scrolling text band in the page footer
+- **Magnetic hover** — buttons scale up with diffused shadow bloom, icons translate diagonally
+- **Theme transition** — view-transition API with circular clip-path morph
 
-## 🚀 Getting Started
+---
 
-### 0. One-click to deploy on Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/MiraHikari/portfolio&project-name=portfolio&repository-name=portfolio)
+## Stack
 
-Modify the `cv.json` file to create your own printable Portfolio/CV.
+- **[Astro](https://astro.build/)** — static site generation
+- **[TypeScript](https://www.typescriptlang.org/)** — type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** — utility-first styling (v3)
+- **[astro-icon](https://github.com/natemoo-re/astro-icon)** — Iconify integration (Remix + Simple Icons)
+- **[Fancybox](https://fancyapps.com/fancybox/)** — lightbox gallery
+- **[HotkeyPad](https://github.com/ssleptsov/hotkeypad)** — keyboard command palette (`Cmd+K`)
+- **[ArtPlum](https://github.com/antfu/)** — canvas generative art by antfu
 
-### 1. Use this Repo as an Astro Project Template
+---
 
-- I use [pnpm](https://pnpm.io/installation) as my package manager.
+## Getting started
 
-# Initialize the project
-```bash
-pnpm create astro@latest --template MiraHikari/portfolio
-```
-
-### 1-1. Clone the repo
-If you don't want to use the template command, you can clone this repo and install the dependencies.
-
-```bash
-git clone https://github.com/MiraHikari/portfolio.git
-cd portfolio
-pnpm install
-```
-
-### 2. Add Your Content:
-
-Edit the `cv.json` file to create your own printable Portfolio/CV.
-
-### 3. Launch the Development Server:
+### 1. Clone & install
 
 ```bash
-# Enjoy the results
-pnpm dev
+git clone https://github.com/shiro-devv/shiro-devv.github.io.git
+cd shiro-devv.github.io
+npm install
 ```
-1. Open [**http://localhost:4321**](http://localhost:4321/) in your browser to view the result 🚀
 
-### 4. Customisable colours:
-Change the data-theme of `cv.json` and choose one of the colour themes defined in theme.css, red, blue, green, cyber, pink and default, with its variants in dark mode, or create your own.
+### 2. Add your content
 
-## 🧞 Commands
+Edit `cv.json` — follows the [JSON Resume](https://jsonresume.org/schema/) schema. Fields:
 
-|     | Command         | Action                                                                       |
-| :-- | :-------------- | :--------------------------------------------------------------------------- |
-| ⚙️  | `dev` or `start` | Launches a local development server at `localhost:4321`.                   |
-| ⚙️  | `build`         | Checks for errors and creates a production build in `./dist/`. |
-| ⚙️  | `preview`       | Local preview at `localhost:4321`                                       |
-| 📦  | `deploy:vercel`         | Deploy on Vercel.                           |
-| 📦 | `deploy:cloudflare`       | Deploy on Cloudflare, please run `wrangler login` first.                                           |                                |
+`basics.name` · `basics.label` · `basics.image` · `basics.summary` · `basics.qoute` · `basics.location` · `basics.profiles` · `work[]` · `education[]` · `skills[]` · `certificates[]` · `images`
 
-## 📝 License
+### 3. Colour themes
 
-This project is [MIT](./LICENSE) licensed.
+Set `basics.theme` in `cv.json` to one of: `blue`, `red`, `orange`, `green`, `cyber`, `pink`. Each has light and dark variants defined in `src/globals.css`.
 
-CV JSON schema from [**jsonresume.org**](https://jsonresume.org/schema/)
+### 4. Run
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:4321`.
+
+---
+
+## Commands
+
+| Command | Action |
+|---|---|
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Type-check + build to `./dist/` |
+| `npm run preview` | Preview production build |
+| `npm run deploy:vercel` | Deploy to Vercel |
+| `npm run deploy:cloudflare` | Deploy to Cloudflare (`wrangler login` first) |
+
+---
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
+
+---
+
+*Forked from [dev-portfolio](https://github.com/Smilesharks/dev-portfolio). Canvas plum animation by [antfu](https://github.com/antfu).*
