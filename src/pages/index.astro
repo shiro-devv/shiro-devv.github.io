@@ -9,12 +9,12 @@ import Skills from "@/components/sections/Skills.astro";
 
 import CV, { basics } from "@cv";
 import Education from "@/components/sections/Education.astro";
-import Images from "@/components/sections/Images.astro";
 import Qoute from "@/components/sections/Qoute.astro";
 import Contacts from "@/components/sections/Contacts.astro";
 import Certificates from "@/components/sections/Certificates.astro";
 import GithubContributions from "@/components/sections/GithubContributions.astro";
 import KineticMarquee from "@/components/KineticMarquee.astro";
+import Gallery from "@/components/sections/Gallery.astro";
 const { name, label } = basics;
 ---
 
@@ -38,18 +38,18 @@ const { name, label } = basics;
         <GithubContributions />
         <Skills />
         <Education />
-        <Certificates />
+        <Contacts />
+        <Gallery />
       </div>
-
+      
       <!-- Projects + Images: full width bottom row -->
       <div class="flex flex-col gap-6 md:col-span-12 md:gap-8">
+        <Certificates />
         <Projects />
-        {CV?.images && <Images />}
       </div>
 
       <!-- Contact: full width -->
       <div class="md:col-span-12">
-        <Contacts />
       </div>
     </div>
 

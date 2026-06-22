@@ -3,7 +3,7 @@ import Section from "../Section.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<Section title="GitHub Contributions">
+<Section eyebrow="Contributions">
   <div class="flex flex-col gap-4">
     <a
       href="https://github.com/shiro-devv"
@@ -53,7 +53,7 @@ import { Icon } from "astro-icon/components";
       if (!response.ok) throw new Error('Failed to fetch');
 
       const data = await response.json();
-      const formatted = `${data.public_repos} repos &middot; ${data.followers} followers`;
+      const formatted = `${data.public_repos} repos • ${data.followers} followers`;
       statsEl.textContent = formatted;
       localStorage.setItem(
         GITHUB_STATS_CACHE_KEY,

@@ -8,7 +8,7 @@ import { certificates } from "@cv";
     <>
       <ul class="stagger-group space-y-3">
         {certificates.map(({ name, date, issuer }, i) => {
-          const certificateYear = new Date(date).getFullYear();
+          const certificateYear = new Date(date).toLocaleDateString();
           return (
             <li class="stagger-item glass-card" style={`--i: ${i}`}>
               <div class="flex flex-wrap items-start justify-between gap-2">

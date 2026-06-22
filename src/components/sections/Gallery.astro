@@ -1,0 +1,29 @@
+---
+import Section from "../Section.astro";
+---
+
+<Section id="gallery" className={Astro.props.className}>
+  <ul class="stagger-group space-y-3">
+    <a
+      href={`https://shiro-devv.github.io/shiros-gallery`}
+      class="btn-primary group"
+    >
+      <span>View Gallery</span>
+      <span class="btn-icon-wrap">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </span>
+    </a>
+  </ul>
+</Section>

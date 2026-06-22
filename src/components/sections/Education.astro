@@ -4,7 +4,7 @@ import Section from "../Section.astro";
 import { education } from "@cv";
 ---
 
-<Section className={Astro.props.className} eyebrow="Learning" title="Education">
+<Section className={Astro.props.className} eyebrow="Learning">
   <ul class="stagger-group space-y-3">
     {education.map(({ institution, startDate, endDate, area }, i) => {
       const startYear = new Date(startDate).getFullYear();

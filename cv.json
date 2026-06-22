@@ -55,41 +55,6 @@
       }
     ]
   },
-  "images": {
-    "intro": "Photography is a way to keep memories and to look back on.",
-    "list": [
-      {
-        "image": "/Halloween.JPG",
-        "alt": "Haloween",
-        "desc": "Shot in the halloween of  vigan 2024.1.11"
-      },
-      {
-        "image": "/Lamp.JPG",
-        "alt": "Street Light",
-        "desc": "A chill night in vigan."
-      },
-      {
-        "image": "/Kuro.jpg",
-        "alt": "kuro",
-        "desc": "Kuro Jumpscare!!!"
-      },
-      {
-        "alt": "History",
-        "desc": "Vigan History Picture Taking / Hangout",
-        "image": "/vigan_history.jpg"
-      },
-      {
-        "image": "/the_gang.jpg",
-        "alt": "The gang",
-        "desc": "The gang"
-      },
-      {
-        "alt": "The bois",
-        "desc": "The bois (Original)",
-        "image": "/the_bois.png"
-      }
-    ]
-  },
   "education": [
     {
       "institution": "University of the Northern Philippines",
@@ -127,12 +92,12 @@
   "certificates": [
     {
       "name": "IT Olympics.",
-      "date": "2025-23-11",
+      "date": "2025-11-23",
       "issuer": "University of Makati"
     },
     {
       "name": "Code Smarter: A Begginers Guide to Progamming Practices",
-      "date": "2024-27-11",
+      "date": "2024-11-27",
       "issuer": "Caren Kate Q. Cubon, MIT"
     },
     {

@@ -4,7 +4,7 @@ import { skills } from "@cv";
 import { Icon } from "astro-icon/components";
 ---
 
-<Section className={Astro.props.className} eyebrow="Tech Stack" title="Programming Languages">
+<Section className={Astro.props.className} eyebrow="Tech Stack">
   <ul class="stagger-group flex flex-wrap gap-2 sm:gap-2.5">
     {skills.map(({ name, icon, level }, i) => (
       <li class="stagger-item tag" title={level} style={`--i: ${i}`}>
