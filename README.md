@@ -1,9 +1,6 @@
 # shiro-devv.github.io
 
 **Personal portfolio & CV** — an Awwwards-tier digital identity built with Astro, Tailwind CSS, and a obsessive attention to micro-interaction detail.
-
-![Preview](https://github.com/user-attachments/assets/44c47034-06e4-412a-b9dd-014593b32215)
-
 ---
 
 ## Design
