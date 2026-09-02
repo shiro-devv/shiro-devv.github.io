@@ -3,7 +3,7 @@ import Section from "../Section.astro";
 import { certificates } from "@cv";
 ---
 
-<Section className={Astro.props.className} eyebrow="Credentials" title="Certificates">
+<Section className={Astro.props.className} eyebrow="Credentials" id="certificates">
   {certificates.length > 0 && (
     <>
       <ul class="stagger-group space-y-3">

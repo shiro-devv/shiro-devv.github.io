@@ -118,7 +118,7 @@
       "level": "Intermediate"
     },
     {
-      "name": "Node",
+      "name": "NodeJS",
       "icon": "ri:nodejs-line",
       "level": "Intermediate"
     },
@@ -126,11 +126,6 @@
       "name": "MongoDB",
       "icon": "simple-icons:mongodb",
       "level": "Intermediate"
-    },
-    {
-      "name": "GitHub",
-      "icon": "ri:github-fill",
-      "level": "Expert"
     },
     {
       "name": "Python",
